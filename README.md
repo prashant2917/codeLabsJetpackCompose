@@ -2,7 +2,7 @@
 ---
 **Introduction**
 ---
- A codeLabsJetpackCompose app consist of variious sample codes that demonstrates the use of Jetpack Compose UI using kotlin Programming languages.
+ A codeLabsJetpackCompose app consist of various sample codes that demonstrates the use of Jetpack Compose UI using kotlin Programming languages.
 
 
 **Pre-requisites**
