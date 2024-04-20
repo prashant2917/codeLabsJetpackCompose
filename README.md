@@ -20,8 +20,15 @@
 **Topics Covered**
 ---
 * How to create composable UI
-* Image Rendering
+* Text and TextField component
+* Image component
+* Button component and click event
 * state in a Compose app
+* Switch component
+* Keyboard Options
+* Modifiers
+* stringResource
+* Row and Column
 
 **Libraries Used**
 ---
