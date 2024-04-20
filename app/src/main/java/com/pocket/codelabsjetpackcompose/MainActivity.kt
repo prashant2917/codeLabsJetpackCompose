@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.pocket.codelabsjetpackcompose.diceroller.DiceRollerApp
+import com.pocket.codelabsjetpackcompose.tipcalculator.TipTimeLayout
 import com.pocket.codelabsjetpackcompose.ui.theme.CodeLabsJetpackComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,15 +20,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    DiceRollerApp()
+
+                    TipTimeLayout()
                 }
             }
         }
     }
-
-
-
-
 }
 
 
