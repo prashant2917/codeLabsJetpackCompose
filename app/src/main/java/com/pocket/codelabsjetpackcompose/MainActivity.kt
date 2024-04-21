@@ -1,5 +1,6 @@
 package com.pocket.codelabsjetpackcompose
 
+import AppTheme
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -7,21 +8,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.pocket.codelabsjetpackcompose.tipcalculator.TipTimeLayout
-import com.pocket.codelabsjetpackcompose.ui.theme.CodeLabsJetpackComposeTheme
+import com.pocket.codelabsjetpackcompose.woofapp.presentation.WoofApp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CodeLabsJetpackComposeTheme {
+            AppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    TipTimeLayout()
+                    WoofApp()
                 }
             }
         }

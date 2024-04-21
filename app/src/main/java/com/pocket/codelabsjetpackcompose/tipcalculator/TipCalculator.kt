@@ -1,5 +1,6 @@
 package com.pocket.codelabsjetpackcompose.tipcalculator
 
+import AppTheme
 import android.icu.text.NumberFormat
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -16,10 +17,10 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Switch
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -36,11 +37,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pocket.codelabsjetpackcompose.R
-import com.pocket.codelabsjetpackcompose.ui.theme.CodeLabsJetpackComposeTheme
 
 
 @Composable
-fun TipTimeLayout(){
+fun TipTimeLayout() {
     var amountInput by remember {
         mutableStateOf("")
     }
@@ -75,7 +75,9 @@ fun TipTimeLayout(){
             ),
             value = amountInput,
             onValueChanged = { amountInput = it },
-            modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth(),
+            modifier = Modifier
+                .padding(bottom = 32.dp)
+                .fillMaxWidth(),
         )
         EditNumberField(
             label = R.string.how_was_the_service,
@@ -86,7 +88,9 @@ fun TipTimeLayout(){
             ),
             value = tipInput,
             onValueChanged = { tipInput = it },
-            modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth(),
+            modifier = Modifier
+                .padding(bottom = 32.dp)
+                .fillMaxWidth(),
         )
         RoundTheTipRow(
             roundUp = roundUp,
@@ -154,7 +158,7 @@ private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boo
 @Preview(showBackground = true)
 @Composable
 fun TipTimeLayoutPreview() {
-    CodeLabsJetpackComposeTheme {
+    AppTheme {
         TipTimeLayout()
     }
 }

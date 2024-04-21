@@ -19,16 +19,21 @@
 
 **Topics Covered**
 ---
+* Kotlin Fundamentals
 * How to create composable UI
-* Text and TextField component
-* Image component
-* Button component and click event
+* Text and TextField Composable
+* Image Composable
+* Button Composable with click event
 * state in a Compose app
-* Switch component
+* Switch Composable
 * Keyboard Options
 * Modifiers
 * stringResource
 * Row and Column
+* Scrollable List with LazyColumn
+* Card Composable
+* Material Design and Theme(Color, typography, Shapes dimensions, dark and light theme)
+* Animation 
 
 **Libraries Used**
 ---
@@ -38,6 +43,7 @@
     implementation platform('androidx.compose:compose-bom:2022.10.00')
     implementation 'androidx.compose.ui:ui'
     implementation 'androidx.compose.ui:ui-graphics'
+    implementation 'androidx.compose.material:material-icons-extended'
     implementation 'androidx.compose.ui:ui-tooling-preview'
     implementation 'androidx.compose.material3:material3'
     testImplementation 'junit:junit:4.13.2'
