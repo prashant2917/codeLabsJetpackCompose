@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.pocket.codelabsjetpackcompose.woofapp.presentation.WoofApp
+import com.pocket.codelabsjetpackcompose.unscramblegame.presentation.GameScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,12 +21,10 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    WoofApp()
+                    GameScreen()
                 }
             }
         }
     }
 }
-
-
 

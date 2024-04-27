@@ -33,7 +33,10 @@
 * Scrollable List with LazyColumn
 * Card Composable
 * Material Design and Theme(Color, typography, Shapes dimensions, dark and light theme)
-* Animation 
+* Animation
+* App Architecture
+* Navigation
+* Adaptive Layout
 
 **Libraries Used**
 ---
