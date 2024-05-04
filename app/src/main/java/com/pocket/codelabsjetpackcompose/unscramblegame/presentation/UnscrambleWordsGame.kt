@@ -36,7 +36,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.pocket.codelabsjetpackcompose.R
 
 @Composable
-fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
+fun UnscrambleWordsGameScreen(gameViewModel: GameViewModel = viewModel()) {
     val gameUiState = gameViewModel.uiState.collectAsState()
     val mediumPadding = dimensionResource(R.dimen.padding_medium)
 
