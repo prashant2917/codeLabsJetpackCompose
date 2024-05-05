@@ -9,6 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.pocket.codelabsjetpackcompose.cupcakeapp.presentation.CupcakeApp
+import com.pocket.codelabsjetpackcompose.marsphoto.presentation.MarsPhotosApp
 
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                  CupcakeApp()
+                  MarsPhotosApp()
                 }
             }
         }
