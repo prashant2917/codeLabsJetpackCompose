@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -75,7 +76,7 @@ fun OrderSummaryScreen(
             items.forEach { item ->
                 Text(item.first.uppercase())
                 Text(text = item.second, fontWeight = FontWeight.Bold)
-                Divider(thickness = dimensionResource(R.dimen.thickness_divider))
+                HorizontalDivider(thickness = dimensionResource(R.dimen.thickness_divider))
             }
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
             FormattedPriceLabel(
@@ -112,7 +113,7 @@ fun OrderSummaryPreview() {
     AppTheme {
         OrderSummaryScreen(
             orderUiState = OrderUiState(0, "Test", "Test", "$300.00"),
-            onSendButtonClicked = { subject: String, summary: String -> },
+            onSendButtonClicked = { _: String, _: String -> },
             onCancelButtonClicked = {},
             modifier = Modifier.fillMaxHeight()
         )

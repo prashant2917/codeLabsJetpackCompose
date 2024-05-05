@@ -37,6 +37,8 @@
 * App Architecture
 * Navigation
 * Adaptive Layout
+* Rest Web Services
+* JSON Parsing
 
 **Libraries Used**
 ---
