@@ -47,7 +47,6 @@ import com.pocket.codelabsjetpackcompose.woofapp.data.dogs
 /**
  * Composable that displays an app bar and a list of dogs.
  */
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WoofApp() {
     Scaffold(
@@ -145,7 +144,7 @@ fun WoofTopAppBar(modifier: Modifier = Modifier) {
                     contentDescription = null
                 )
                 Text(
-                    text = stringResource(R.string.Woof_app_name),
+                    text = stringResource(R.string.woof_app_name),
                     style = MaterialTheme.typography.displayLarge
                 )
             }

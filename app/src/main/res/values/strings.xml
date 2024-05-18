@@ -1,13 +1,16 @@
 <resources>
-    <string name="app_name">codeLabsJetpackCompose</string>
+    <string name="app_name">codeLabs</string>
     <!--Greeting app-->
+    <string name="greeting_app_name">Greeting</string>
     <string name="happy_birthday_text">Happy Birthday Sam!</string>
     <string name="signature_text">From Emma</string>
 
     <!--Dice roll-->
+    <string name="dice_roll_app">Dice Roll</string>
     <string name="roll">Roll</string>
 
     <!--Tip calculator-->
+    <string name="tip_calculator_app">Tip Calculator</string>
     <string name="calculate_tip">Calculate Tip</string>
     <string name="bill_amount">Bill Amount</string>
     <string name="how_was_the_service">Tip Percentage</string>
@@ -15,7 +18,7 @@
     <string name="tip_amount">Tip Amount: %s</string>
 
     <!--Affirmation app-->
-    <string name="affirmation_app">Affirmation App</string>
+    <string name="affirmation_app">Affirmation List</string>
     <string name="affirmation1">I am strong.</string>
     <string name="affirmation2">I believe in myself.</string>
     <string name="affirmation3">Each day is a new opportunity to grow and be a better version of myself.</string>
@@ -28,7 +31,7 @@
     <string name="affirmation10">I will be present in all the moments that this day brings.</string>
 
     <!--Woof app-->
-    <string name="Woof_app_name">Woof App</string>
+    <string name="woof_app_name">Woof List</string>
     <string name="dog_name_1">Koda</string>
     <string name="dog_name_2">Lola</string>
     <string name="dog_name_3">Frankie</string>
@@ -52,7 +55,7 @@
     <string name="expand_button_content_description">See more or less information about a dog.</string>
 
     <!--Unscramble App-->
-    <string name="unscramble_app_name">Unscramble</string>
+    <string name="unscramble_app_name">Unscramble Words</string>
     <string name="instructions">Unscramble the word using all the letters.</string>
     <string name="skip">Skip</string>
     <string name="submit">Submit</string>
@@ -66,7 +69,7 @@
     <string name="wrong_guess">Wrong Guess!</string>
 
     <!--Cupcake App-->
-    <string name="cupcake_app_name">Cupcake</string>
+    <string name="cupcake_app_name">Cupcake Order</string>
     <string name="order_cupcakes">Order Cupcakes</string>
     <string name="one_cupcake">One Cupcake</string>
     <string name="six_cupcakes">Six Cupcakes</string>

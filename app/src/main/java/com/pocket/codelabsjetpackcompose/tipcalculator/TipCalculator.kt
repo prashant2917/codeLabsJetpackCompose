@@ -40,7 +40,7 @@ import com.pocket.codelabsjetpackcompose.R
 
 
 @Composable
-fun TipTimeLayout() {
+fun TipCalculatorApp() {
     var amountInput by remember {
         mutableStateOf("")
     }
@@ -159,6 +159,6 @@ private fun calculateTip(amount: Double, tipPercent: Double = 15.0, roundUp: Boo
 @Composable
 fun TipTimeLayoutPreview() {
     AppTheme {
-        TipTimeLayout()
+        TipCalculatorApp()
     }
 }
