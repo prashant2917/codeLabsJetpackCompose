@@ -3,7 +3,6 @@ package com.pocket.codelabsjetpackcompose.marsphoto.presentation
 import AppTheme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
@@ -17,18 +16,10 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -42,44 +33,19 @@ import com.pocket.codelabsjetpackcompose.R
 import com.pocket.codelabsjetpackcompose.marsphoto.data.MarsUiState
 import com.pocket.codelabsjetpackcompose.marsphoto.model.MarsPhoto
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MarsPhotosApp() {
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
-    Scaffold(
-        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { MarsTopAppBar(scrollBehavior = scrollBehavior) }
-    ) {
-        Surface(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            val marsViewModel: MarsPhotoViewModel = viewModel(factory = MarsPhotoViewModel.Factory)
-            HomeScreen(
-                marsUiState = marsViewModel.marsUiState,
-                retryAction = marsViewModel::getMarsPhotos,
-                contentPadding = it
-            )
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MarsTopAppBar(scrollBehavior: TopAppBarScrollBehavior, modifier: Modifier = Modifier) {
-    CenterAlignedTopAppBar(
-        scrollBehavior = scrollBehavior,
-        title = {
-            Text(
-                text = stringResource(R.string.mars_app_name),
-                style = MaterialTheme.typography.headlineSmall,
-            )
-        },
-        modifier = modifier
+    val marsViewModel: MarsPhotoViewModel = viewModel(factory = MarsPhotoViewModel.Factory)
+    MarsPhotoScreen(
+        marsUiState = marsViewModel.marsUiState,
+        retryAction = marsViewModel::getMarsPhotos,
+        contentPadding = PaddingValues(8.dp)
     )
 }
 
+
 @Composable
-fun HomeScreen(
+fun MarsPhotoScreen(
     marsUiState: MarsUiState,
     retryAction: () -> Unit,
     modifier: Modifier = Modifier,
@@ -87,10 +53,10 @@ fun HomeScreen(
 ) {
     when (marsUiState) {
         is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
-        is MarsUiState.Success ->  PhotosGridScreen(marsUiState.photos, modifier)
+        is MarsUiState.Success -> PhotosGridScreen(marsUiState.photos, modifier)
 
 
-        is MarsUiState.Error -> ErrorScreen(retryAction,modifier = modifier.fillMaxSize())
+        is MarsUiState.Error -> ErrorScreen(retryAction, modifier = modifier.fillMaxSize())
     }
 }
 
@@ -125,7 +91,6 @@ fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier) {
         }
     }
 }
-
 
 
 @Composable
@@ -163,10 +128,13 @@ fun PhotosGridScreen(
     ) {
         items(items = photos, key = { photo -> photo.id }) {
 
-                photo -> MarsPhotoCard(photo,  modifier = modifier
-            .padding(4.dp)
-            .fillMaxWidth()
-            .aspectRatio(1.5f))
+                photo ->
+            MarsPhotoCard(
+                photo, modifier = modifier
+                    .padding(4.dp)
+                    .fillMaxWidth()
+                    .aspectRatio(1.5f)
+            )
         }
     }
 }

@@ -49,18 +49,13 @@ import com.pocket.codelabsjetpackcompose.woofapp.data.dogs
  */
 @Composable
 fun WoofApp() {
-    Scaffold(
-        topBar = {
-            WoofTopAppBar()
-        }
-    ) { it ->
-        LazyColumn(contentPadding = it, modifier = Modifier.padding(12.dp)) {
-            items(dogs) {
-                DogItem(
-                    dog = it,
-                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-                )
-            }
+
+    LazyColumn(modifier = Modifier.padding(12.dp)) {
+        items(dogs) {
+            DogItem(
+                dog = it,
+                modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+            )
         }
     }
 }
@@ -116,41 +111,6 @@ fun DogItem(
             }
         }
     }
-}
-
-/**
- * Composable that displays a Top Bar with an icon and text.
- *
- * @param modifier modifiers to set to this composable
- */
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun WoofTopAppBar(modifier: Modifier = Modifier) {
-    CenterAlignedTopAppBar(
-        title = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Image(
-                    modifier = Modifier
-                        .size(dimensionResource(R.dimen.image_size))
-                        .padding(dimensionResource(R.dimen.padding_small)),
-                    painter = painterResource(R.drawable.ic_woof_logo),
-
-                    // Content Description is not needed here - image is decorative, and setting a
-                    // null content description allows accessibility services to skip this element
-                    // during navigation.
-
-                    contentDescription = null
-                )
-                Text(
-                    text = stringResource(R.string.woof_app_name),
-                    style = MaterialTheme.typography.displayLarge
-                )
-            }
-        },
-        modifier = modifier
-    )
 }
 
 /**

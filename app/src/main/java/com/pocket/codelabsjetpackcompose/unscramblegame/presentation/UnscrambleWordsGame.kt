@@ -48,11 +48,6 @@ fun UnscrambleWordsGameScreen(gameViewModel: GameViewModel = viewModel()) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Text(
-            text = stringResource(R.string.app_name),
-            style = typography.titleLarge,
-        )
-
         GameLayout(
             currentScrambledWord = gameUiState.value.currentScrambleWord,
             isGuessWrong = gameUiState.value.isGuessedWordWrong,
