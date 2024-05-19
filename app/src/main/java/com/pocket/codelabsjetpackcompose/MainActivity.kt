@@ -81,8 +81,6 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                     ) { innerPadding ->
-                        // val uiState by viewModel.uiState.collectAsState()
-
                         AppNavHost(navController = navController, innerPadding = innerPadding)
                     }
                 }
