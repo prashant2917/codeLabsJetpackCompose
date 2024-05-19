@@ -29,10 +29,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.pocket.codelabsjetpackcompose.affirmations.AffirmationsApp
 import com.pocket.codelabsjetpackcompose.cupcakeapp.data.DataSource
 import com.pocket.codelabsjetpackcompose.cupcakeapp.presentation.CupcakeApp
@@ -41,11 +43,11 @@ import com.pocket.codelabsjetpackcompose.cupcakeapp.presentation.OrderViewModel
 import com.pocket.codelabsjetpackcompose.cupcakeapp.presentation.SelectOptionScreen
 import com.pocket.codelabsjetpackcompose.cupcakeapp.presentation.cancelOrderAndNavigateToStart
 import com.pocket.codelabsjetpackcompose.cupcakeapp.presentation.shareOrder
-import com.pocket.codelabsjetpackcompose.cupcakeapp.route.CupcakeScreen
 import com.pocket.codelabsjetpackcompose.diceroller.DiceRollerApp
 import com.pocket.codelabsjetpackcompose.greeting.GreetingImage
 import com.pocket.codelabsjetpackcompose.home.HomeScreenRoute
 import com.pocket.codelabsjetpackcompose.home.presentation.HomeScreenApp
+
 import com.pocket.codelabsjetpackcompose.marsphoto.presentation.MarsPhotosApp
 import com.pocket.codelabsjetpackcompose.tipcalculator.TipCalculatorApp
 import com.pocket.codelabsjetpackcompose.unscramblegame.presentation.UnscrambleWordsGameScreen
@@ -64,8 +66,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                 //HomeScreenApp()
-                   val navController: NavHostController = rememberNavController()
+                    //HomeScreenApp()
+                    val navController: NavHostController = rememberNavController()
                     val backStackEntry by navController.currentBackStackEntryAsState()
                     // Get the name of the current screen
                     val currentScreen = HomeScreenRoute.valueOf(
@@ -116,8 +118,8 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun AppNavHost(navController : NavHostController, innerPadding: PaddingValues) {
-       val orderViewModel: OrderViewModel = viewModel()
+    fun AppNavHost(navController: NavHostController, innerPadding: PaddingValues) {
+        val orderViewModel: OrderViewModel = viewModel()
         val orderUiState by orderViewModel.uiState.collectAsState()
         NavHost(
             navController = navController,
@@ -127,9 +129,13 @@ class MainActivity : ComponentActivity() {
                 .padding(innerPadding)
         ) {
             composable(route = HomeScreenRoute.HomeScreen.name) {
-                HomeScreenApp( modifier = Modifier
-                    .fillMaxSize()
-                    .padding(dimensionResource(R.dimen.padding_medium)),  contentPadding = PaddingValues(16.dp), navController =  navController)
+                HomeScreenApp(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(dimensionResource(R.dimen.padding_medium)),
+                    contentPadding = PaddingValues(16.dp),
+                    navController = navController
+                )
             }
             composable(route = HomeScreenRoute.GreetingScreen.name) {
                 GreetingImage(message = "Happy Birthday", from = "John")
@@ -148,7 +154,7 @@ class MainActivity : ComponentActivity() {
             }
 
             composable(route = HomeScreenRoute.UnscrambleWordScreen.name) {
-              UnscrambleWordsGameScreen()
+                UnscrambleWordsGameScreen()
             }
 
             composable(route = HomeScreenRoute.TipCalculatorScreen.name) {
@@ -163,11 +169,11 @@ class MainActivity : ComponentActivity() {
                 CupcakeApp(viewModel = orderViewModel, navController = navController)
             }
 
-            composable(route = CupcakeScreen.CupCakeFlavor.name) {
+            composable(route = HomeScreenRoute.CupCakeFlavor.name) {
                 val context = LocalContext.current
                 SelectOptionScreen(
                     subtotal = orderUiState.price,
-                    onNextButtonClicked = { navController.navigate(CupcakeScreen.CupCakePickup.name) },
+                    onNextButtonClicked = { navController.navigate(HomeScreenRoute.CupCakePickup.name) },
                     onCancelButtonClicked = {
                         cancelOrderAndNavigateToStart(orderViewModel, navController)
                     },
@@ -176,10 +182,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxHeight()
                 )
             }
-            composable(route = CupcakeScreen.CupCakePickup.name) {
+            composable(route = HomeScreenRoute.CupCakePickup.name) {
                 SelectOptionScreen(
                     subtotal = orderUiState.price,
-                    onNextButtonClicked = { navController.navigate(CupcakeScreen.CupCakeSummary.name) },
+                    onNextButtonClicked = { navController.navigate(HomeScreenRoute.CupCakeSummary.name) },
                     onCancelButtonClicked = {
                         cancelOrderAndNavigateToStart(orderViewModel, navController)
                     },
@@ -188,7 +194,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxHeight()
                 )
             }
-            composable(route = CupcakeScreen.CupCakeSummary.name) {
+            composable(route = HomeScreenRoute.CupCakeSummary.name) {
                 val context = LocalContext.current
                 OrderSummaryScreen(
                     orderUiState = orderUiState,
@@ -201,6 +207,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxHeight()
                 )
             }
+
 
         }
     }
