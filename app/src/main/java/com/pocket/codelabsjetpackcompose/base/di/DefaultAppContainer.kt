@@ -3,6 +3,8 @@ package com.pocket.codelabsjetpackcompose.base.di
 import android.content.Context
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.pocket.codelabsjetpackcompose.base.network.MarsApiService
+import com.pocket.codelabsjetpackcompose.inventory.data.InventoryItemsRepository
+import com.pocket.codelabsjetpackcompose.inventory.data.OfflineInventoryItemsRepository
 import com.pocket.codelabsjetpackcompose.marsphoto.data.MarsPhotosRepository
 import com.pocket.codelabsjetpackcompose.marsphoto.data.NetworkMarsPhotosRepository
 import kotlinx.serialization.json.Json
@@ -21,7 +23,7 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
         .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
         .baseUrl(baseUrl)
         .build()
-    
+
     private val retrofitService: MarsApiService by lazy {
         retrofit.create(MarsApiService::class.java)
     }
@@ -30,5 +32,9 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
         NetworkMarsPhotosRepository(retrofitService)
     }
 
+    override val itemsRepository: InventoryItemsRepository by lazy {
+        val db = AppModule.provideInventoryDataBase(context)
+        OfflineInventoryItemsRepository(db.itemDao())
+    }
 
 }

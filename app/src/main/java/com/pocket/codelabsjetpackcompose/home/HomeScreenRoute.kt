@@ -16,4 +16,5 @@ enum class HomeScreenRoute(@StringRes val title: Int) {
     CupCakeSummary(title = R.string.order_summary),
     MarsPhoto(title = R.string.mars_photo),
     AffirmationApp(title = R.string.affirmation_app),
+    InventoryApp(title = R.string.inventory_app_name)
 }
