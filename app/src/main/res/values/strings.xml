@@ -109,10 +109,11 @@
 
     <!--Inventory App-->
     <string name="inventory_app_name">Inventory App</string>
+    <string name="inventory_list">Inventory List</string>
     <string name="attention">Attention</string>
     <string name="delete">Delete</string>
     <string name="delete_question">Are you sure you want to delete?</string>
-    <string name="no_item_description">Oops!\nNo items in the inventory.\nTap + to add.</string>
+    <string name="no_item_description">Oops!\nNo items in the inventory.\nClick on Add button.</string>
     <string name="edit_item_title">Edit Item</string>
     <string name="item">Item</string>
     <string name="item_detail_title">Item Details</string>

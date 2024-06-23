@@ -16,5 +16,6 @@ fun getHomeDataList(): List<HomeScreenData> {
     list.add(HomeScreenData(R.string.unscramble_app_name, HomeScreenRoute.UnscrambleWordScreen))
     list.add(HomeScreenData(R.string.cupcake_app_name, HomeScreenRoute.CupCakeOrderScreen))
     list.add(HomeScreenData(R.string.mars_app_name, HomeScreenRoute.MarsPhoto))
+    list.add(HomeScreenData(R.string.inventory_app_name, HomeScreenRoute.InventoryApp))
     return list
 }

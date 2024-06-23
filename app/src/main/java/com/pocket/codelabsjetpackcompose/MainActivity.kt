@@ -36,6 +36,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.pocket.codelabsjetpackcompose.affirmations.AffirmationsApp
+import com.pocket.codelabsjetpackcompose.affirmations.utils.Constants
 import com.pocket.codelabsjetpackcompose.cupcakeapp.data.DataSource
 import com.pocket.codelabsjetpackcompose.cupcakeapp.presentation.CupcakeApp
 import com.pocket.codelabsjetpackcompose.cupcakeapp.presentation.OrderSummaryScreen
@@ -47,6 +48,9 @@ import com.pocket.codelabsjetpackcompose.diceroller.DiceRollerApp
 import com.pocket.codelabsjetpackcompose.greeting.GreetingImage
 import com.pocket.codelabsjetpackcompose.home.HomeScreenRoute
 import com.pocket.codelabsjetpackcompose.home.presentation.HomeScreenApp
+import com.pocket.codelabsjetpackcompose.inventory.ui.InventoryApp
+import com.pocket.codelabsjetpackcompose.inventory.ui.InventoryItemDetailScreen
+import com.pocket.codelabsjetpackcompose.inventory.ui.InventoryItemEntryScreen
 
 import com.pocket.codelabsjetpackcompose.marsphoto.presentation.MarsPhotosApp
 import com.pocket.codelabsjetpackcompose.tipcalculator.TipCalculatorApp
@@ -66,7 +70,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    //HomeScreenApp()
                     val navController: NavHostController = rememberNavController()
                     val backStackEntry by navController.currentBackStackEntryAsState()
                     // Get the name of the current screen
@@ -206,6 +209,28 @@ class MainActivity : ComponentActivity() {
                     },
                     modifier = Modifier.fillMaxHeight()
                 )
+            }
+
+            composable(route = HomeScreenRoute.InventoryApp.name) {
+                InventoryApp(navigateToItemEntry = { navController.navigate(HomeScreenRoute.InventoryAppEntry.name) },
+                    navigateToItemUpdate = {
+                        val id = it.toString()
+                        navController.navigate("${HomeScreenRoute.InventoryAppDetail.name}/${id}")
+                    })
+            }
+
+            composable(route = HomeScreenRoute.InventoryAppEntry.name) {
+                InventoryItemEntryScreen(navigateBack = { navController.popBackStack() },)
+            }
+
+            composable(
+                route = "${HomeScreenRoute.InventoryAppDetail.name}+/${Constants.NavigationRouteConstants.INVENTORY_ITEM_ID_ARG}",
+                arguments = listOf(navArgument(Constants.NavigationRouteConstants.KEY_INVENTORY_ITEM_ID) {
+                    type = NavType.StringType
+                })
+            ) { backStackEntry ->
+                InventoryItemDetailScreen(inventoryId = backStackEntry.arguments?.getString(Constants.NavigationRouteConstants.KEY_INVENTORY_ITEM_ID, "")?.toInt())
+
             }
 
 
